@@ -39,14 +39,12 @@ firebase.initializeApp(config)
 
 var database = firebase.database()
 var contactRef = database.ref('/contacts')
-var messageRef = database.ref('/messages')
 
 export default {
   name: 'HelloWorld',
   data () {
     return {
       contacts: {},
-      messages: {},
       tel: '',
       name: '',
       updateTel: '',
@@ -85,9 +83,6 @@ export default {
   mounted () {
     contactRef.on('value', (snapshot) => {
       this.contacts = snapshot.val()
-    })
-    messageRef.on('value', (snapshot) => {
-      this.messages = snapshot.val()
     })
   }
 }
